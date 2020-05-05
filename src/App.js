@@ -1,15 +1,26 @@
 import React from "react";
 import "./styles.css";
-import store from "./store/index";
+import { connect } from "react-redux";
 import { increment, decrement } from "./store/count";
 
-export default function App() {
-  store.dispatch(increment());
-  store.dispatch(decrement());
+function App(props) {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h1>{props.count.count}</h1>
+      <button onClick={props.increment}>+</button>
+      <button onClick={props.decrement}>-</button>
     </div>
   );
 }
+
+const mapStateToProps = globalState => ({ count: globalState });
+
+const mapDispatchToProps = {
+  increment,
+  decrement
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
