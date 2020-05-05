@@ -2,10 +2,10 @@ import React from "react";
 import "./styles.css";
 // import { connect, useSelector } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./store/count";
+import { increment, decrement } from "./store/index.js";
 
 function App(props) {
-  const count = useSelector(state => state.count);
+  const count = useSelector(state => state);
   const dispatch = useDispatch();
   return (
     <div className="App">
